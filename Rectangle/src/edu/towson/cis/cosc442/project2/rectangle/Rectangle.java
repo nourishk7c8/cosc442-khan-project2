@@ -10,7 +10,7 @@ public class Rectangle {
 	private Point p1, p2;
 	
 	/**
-	 * Instantiates a new rectangle with diagonally opposite points
+	 * Instantiates a new rectangle.
 	 *
 	 * @param p1 the p1
 	 * @param p2 the p2
@@ -30,11 +30,8 @@ public class Rectangle {
 	}
 	
 	/**
-	 * Gets the diagonal, which is just the distance between the two points. a^2 + b^2 = c^2
-	 * p2.x - p1.x = a
-	 * p2.y - p1.y = b
-	 * the diagonal = c
-	 * 
+	 * Gets the diagonal.
+	 *
 	 * @return the diagonal
 	 */
 	public Double getDiagonal() {
