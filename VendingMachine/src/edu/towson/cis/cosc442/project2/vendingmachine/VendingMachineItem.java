@@ -48,4 +48,5 @@ public class VendingMachineItem {
     public double getPrice() {
         return price;
     }
+    
 }

@@ -145,7 +145,7 @@ public class VendingMachine {
 	 * @throws VendingMachineException Throws a VendingMachineException if the amount is < 0 
 	 */
 	public void insertMoney(double amount) throws VendingMachineException {
-		if( amount < 0 )
+		if( amount <= 0 )
 			throw new VendingMachineException(VendingMachine.INVALID_AMOUNT_MESSAGE);
 		this.balance += amount;
 	}
@@ -167,16 +167,21 @@ public class VendingMachine {
 	 * Postcondition: The amount of the item is subtracted from the balance
 	 * @param code The code for the item from the vending machine
 	 * @return Returns true if there is enough money to make the purchase.  Returns false if not enough money is put
-	 * into the vending machine to make the purchase.  Also returns false if the code is for an empty slot.
+	 * into the vending machine to make the purchase. Also returns false if the code is for an empty slot.
 	 */
 	public boolean makePurchase(String code) {
 		boolean returnCode = false;
-		VendingMachineItem item = getItem(code);
-		if(( item != null ) && ( this.balance >= item.getPrice() )) {
-			removeItem(code);
-			this.balance -= item.getPrice();
-			returnCode = true;
+		try{
+			VendingMachineItem item = getItem(code);
+			if(( item != null ) && ( this.balance >= item.getPrice() )) {
+				removeItem(code);
+				this.balance -= item.getPrice();
+				returnCode = true;
+			}
+		}catch(VendingMachineException e){
+			System.out.println(e);
 		}
+		
 		return returnCode;
 	}
 
